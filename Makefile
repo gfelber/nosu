@@ -5,6 +5,7 @@ NAME = nosu
 
 all:
 	$(CC) $(CFLAGS) ./$(NAME).S $(LDFLAGS) -o ./$(NAME)
+	strip --strip-section-headers ./$(NAME)
 
 clean:
 	rm -rf $(NAME)

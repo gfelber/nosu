@@ -1,5 +1,5 @@
 # NOSU
-low profile wrapper (<512B) to escalate privileges (need SUID bit)
+low profile wrapper (<256B) to escalate privileges (need SUID bit)
 
 usage:
 ```bash

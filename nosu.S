@@ -16,7 +16,7 @@ _start:
 MAIN: 
     # setuid to root
     mov rax, SYS_setuid # SETUID SYSCALL
-    mov rdi, 0          # ROOT UID
+    xor rdi, rdi        # ROOT UID
     syscall
     mov rdi, 3          # exit code
     cmp rax, 0
@@ -27,8 +27,7 @@ MAIN:
     mov rax, SYS_execve  # EXECVE SYSCALL
     lea rsi, [rsp]
     pop rdi
-    dec rbx
-    lea rdx, qword [rsp + 8*rbx - 0x8]  # envs
+    lea rdx, qword [rsp + 8*rbx - 0x10]  # envs
     syscall
 
     mov rdi, 1      # status code 1
