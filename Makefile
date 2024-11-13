@@ -1,9 +1,10 @@
-build: setup
-	nasm -f elf64 nosu.nasm -o ./dist/nosu.o 
-	ld -Ttext=0x4000b0 -znosectionheader --strip-all ./dist/nosu.o -o ./nosu
+CC = gcc
+CFLAGS = -Os -s -nostartfiles -no-pie -static -fno-builtin
+LDFLAGS = -Wl,-Tlinker.ld 
+NAME = nosu
 
-setup: 
-	mkdir -p dist
+all:
+	$(CC) $(CFLAGS) ./$(NAME).S $(LDFLAGS) -o ./$(NAME)
 
 clean:
-	rm -r nosu dist
+	rm -rf $(NAME)
