@@ -22,11 +22,11 @@ MAIN:
     cmp rax, 0
     jl EXIT
 
-    pop rax             # shift stack
+    pop rax             # remove the binary name
     # Execute the specified binary using execve
     mov rax, SYS_execve  # EXECVE SYSCALL
-    pop rdi
     lea rsi, [rsp]
+    pop rdi
     dec rbx
     lea rdx, qword [rsp + 8*rbx - 0x8]  # envs
     syscall

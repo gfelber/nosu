@@ -1,26 +1,23 @@
-# nopersonality
-low profile wrapper (<256B) to disable ASLR with `ADDR_NO_RANDOMIZE`
+# NOSU
+low profile wrapper (<512B) to escalate privileges (need SUID bit)
 
 usage:
 ```bash
-./nopersonality BINARY [ARGS...]
+./nosu BINARY [ARGS...]
 ```
 
 Note current environment is included.
 
 ## Requirements
-+ nasm
-+ ld
++ gcc
 + make
 
 ## build
 ```bash
 make      # amd64
-# OR
-make x86  # x86
 ```
 
 ## Exit Codes:
 1. execve failed
 2. no BINARY specified 
-3. personality `ADDR_NO_RANDOMIZE` failed (docker disables by default)
+3. setuid failed (no SUID bit?)
