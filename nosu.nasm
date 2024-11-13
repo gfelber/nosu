@@ -11,9 +11,9 @@ _start:
     
 
 MAIN: 
-    ; Set personality to ADDR_NO_RANDOMIZE
-    mov rax, 0x69       ; PERSONALITY SYSCALL
-    mov rdi, 0          ; ADDR_NO_RANDOMIZE
+    ; setuid to root
+    mov rax, 0x69       ; SETUID SYSCALL
+    mov rdi, 0          ; ROOT UID
     syscall
     mov rdi, 3          ; exit code
     cmp rax, 0
